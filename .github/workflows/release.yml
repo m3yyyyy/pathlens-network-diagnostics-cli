@@ -36,7 +36,7 @@ jobs:
 
     steps:
       - name: Check out source
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Install Rust target
         run: rustup toolchain install 1.90.0 --profile minimal --target ${{ matrix.target }}
