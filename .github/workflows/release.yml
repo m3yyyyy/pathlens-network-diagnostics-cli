@@ -36,7 +36,7 @@ jobs:
 
     steps:
       - name: Check out source
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Install Rust target
         run: rustup toolchain install 1.90.0 --profile minimal --target ${{ matrix.target }}
@@ -51,7 +51,7 @@ jobs:
           cp "target/${{ matrix.target }}/release/${{ matrix.binary }}" "dist/${{ matrix.output }}"
 
       - name: Upload release asset
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.output }}
           path: dist/${{ matrix.output }}
@@ -66,8 +66,11 @@ jobs:
       contents: write
 
     steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+
       - name: Download release assets
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           path: dist
           merge-multiple: true
