@@ -1,0 +1,16 @@
+version: 1
+
+defaults:
+  timeout_ms: 5000
+  concurrency: 4
+  method: HEAD
+  expect_status: [200]
+
+targets:
+  - name: example-home
+    url: https://example.com/
+
+  - name: github-status
+    url: https://www.githubstatus.com/api/v2/status.json
+    method: GET
+    expect_status: [200]
